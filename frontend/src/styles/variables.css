@@ -1,0 +1,40 @@
+/* Centralized CSS variables for light/dark themes */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(2,6,23,0.08);
+  --glass: rgba(255,255,255,0.6);
+  --input-bg: #f4f6fb;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #071023;
+    --card: #0f1724;
+    --text: #e6eef8;
+    --muted: #9aa6b2;
+    --primary: #58a6ff;
+    --primary-contrast: #062033;
+    --radius: 12px;
+    --shadow: 0 8px 28px rgba(2,6,23,0.6);
+    --glass: rgba(255,255,255,0.03);
+    --input-bg: #071428;
+  }
+}
+
+/* Basic global resets */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
