@@ -36,47 +36,51 @@ async function getFoodItems(req,res){
     })
 }
 
-async function likeFood(req,res){
-    const {foodId} = req.body
-    const user = req.user
+async function likeFood(req, res) {
+  try {
+    const { foodId } = req.body;
+    const user = req.user;
 
     const isAlreadyLiked = await likeModel.findOne({
-            user: user._id,
-            food: foodId 
-        })
+      user: user._id,
+      food: foodId,
+    });
 
-    if(isAlreadyLiked){
-        await likeModel.deleteOne({
-            user: user._id,
-            food: foodId
-        })
+    if (isAlreadyLiked) {
+      await likeModel.deleteOne({
+        user: user._id,
+        food: foodId,
+      });
 
-        await foodModel.findByIdAndUpdate(
-            foodId,
-           { $inc : {likeCount : -1 }}
-        );
+      await foodModel.findByIdAndUpdate(foodId, {
+        $inc: { likeCount: -1 },
+      });
 
-        return res.status(200).json({
-            message : "food unliked successfully"
-    })
+      return res.status(200).json({
+        like: false,
+        message: "food unliked successfully",
+      });
+    }
+
+    await likeModel.create({
+      user: user._id,
+      food: foodId,
+    });
+
+    await foodModel.findByIdAndUpdate(foodId, {
+      $inc: { likeCount: 1 },
+    });
+
+    return res.status(200).json({
+      like: true,
+      message: "food liked successfully",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
 }
 
-const like = await likeModel.create({
-    user : user._id,
-    food : foodId
-})
-
- await foodModel.findByIdAndUpdate(
-    foodId,
-    { $inc: { likeCount: 1 } }
-  );
-
-res.status(201).json({
-    message : "food likes successfully",
-    like
-})
-
-}
 
 async function saveFood(req,res){
     const {foodId} = req.body;

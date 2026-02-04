@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true, // we use the unique proerty here so that a second person cannot make an account from the same mail id
+      unique: true, // we use the unique property here so that a second person cannot make an account from the same mail id
     },
     password: {
       type: String,

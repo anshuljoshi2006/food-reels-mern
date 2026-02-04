@@ -188,7 +188,7 @@ const Home = () => {
       </div>
 
       <div className="bottom-nav">
-        <button>
+        <button  onClick={() => navigate("/reels", { replace: true })}>
           <span>
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"

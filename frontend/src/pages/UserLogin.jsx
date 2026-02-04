@@ -18,7 +18,7 @@ const UserLogin = () => {
     })
     console.log(response.data);
 
-    navigate("/")
+    navigate("/reels")
 };
 
   return (

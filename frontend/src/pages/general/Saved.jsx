@@ -101,7 +101,6 @@ const Saved = () => {
                 loop
               />
 
-              {/* RIGHT SIDE ICONS */}
               <div className="reel-actions">
                 <button onClick={() => likeVideo(v)} className="action-btn">
                   <div className="action-inner">
@@ -168,7 +167,7 @@ const Saved = () => {
                 </button>
               </div>
 
-              {/* OVERLAY */}
+             
               <div className="reel-overlay">
                 <div className="reel-desc">{v.description}</div>
                 <Link
@@ -182,9 +181,9 @@ const Saved = () => {
           ))}
       </div>
 
-      {/* BOTTOM NAV */}
+      
       <div className="bottom-nav">
-        <button onClick={() => navigate("/")}>
+        <button  onClick={() => navigate("/reels", { replace: true })}>
           <span>
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"

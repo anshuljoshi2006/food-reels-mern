@@ -43,14 +43,14 @@ const CreateFood = () => {
 
     console.log(response.data);
 
-    navigate("/");
+    navigate("/reels");
 
   }
 
   const handleReset = () => {
     setFormData({ videoFile: null, foodName: '', description: '' })
     setVideoPreview(null)
-    // Clean up the object URL
+
     if (videoPreview) {
       URL.revokeObjectURL(videoPreview)
     }
@@ -65,7 +65,7 @@ const CreateFood = () => {
         </div>
 
         <form className="create-food-form" onSubmit={handleSubmit}>
-          {/* Video Input */}
+          
           <div className="form-field">
             <label>Video</label>
             <div className="video-input-wrapper">
@@ -96,7 +96,7 @@ const CreateFood = () => {
             )}
           </div>
 
-          {/* Food Name Input */}
+          
           <div className="form-field">
             <label htmlFor="food-name">Food Name</label>
             <input
@@ -111,7 +111,7 @@ const CreateFood = () => {
             <div className="helper-text">Enter the name of the food item</div>
           </div>
 
-          {/* Description Input */}
+          
           <div className="form-field">
             <label htmlFor="description">Description</label>
             <textarea
@@ -125,7 +125,7 @@ const CreateFood = () => {
             <div className="helper-text">Provide details about your food item</div>
           </div>
 
-          {/* Actions */}
+          
           <div className="create-food-actions">
             <button type="submit" className="btn btn-primary">
               Create Food Item
