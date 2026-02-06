@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../api";
 
 const PartnerRegister = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const PartnerRegister = () => {
     const address = e.target.address.value;
 
     const response = await axios.post(
-      "http://localhost:3000/api/auth/food-partner/register",
+      `${API}/api/auth/food-partner/register`,
       {
         name: businessName,
         contactName,

@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { API } from '../../api';
 
 const PartnerLogin = () => {
 
@@ -12,7 +13,7 @@ const PartnerLogin = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const response = await axios.post("http://localhost:3000/api/auth/food-partner/login",{
+    const response = await axios.post(`${API}/api/auth/food-partner/login`,{
       email,
       password
     },{

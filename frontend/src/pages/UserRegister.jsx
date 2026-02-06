@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import { API } from '../../api';
 
 const UserRegister = () => {
 
@@ -14,7 +15,7 @@ const UserRegister = () => {
     const email = e.target.email.value;
     const password = e.target.password.value
 
-    const response = await axios.post("http://localhost:3000/api/auth/user/register",{
+    const response = await axios.post(`${API}/api/auth/user/register`,{
         fullName:firstName + " " + lastName,
         email,
         password

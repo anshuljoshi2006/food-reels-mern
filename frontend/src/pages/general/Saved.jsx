@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "../../styles/reels.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { API } from "../../api";
 
 const Saved = () => {
   const [videos, setVideos] = useState([]);
@@ -11,7 +12,7 @@ const Saved = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/food/save", {
+      .get(`${API}/api/food/save`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -47,7 +48,7 @@ const Saved = () => {
 
   async function likeVideo(v) {
     const response = await axios.post(
-      "http://localhost:3000/api/food/like",
+      `${API}/api/food/like`,
       { foodId: v._id },
       { withCredentials: true }
     );
@@ -69,7 +70,7 @@ const Saved = () => {
 
   async function bookmarkVideo(v) {
     const response = await axios.post(
-      "http://localhost:3000/api/food/save",
+      `${API}/api/food/save`,
       { foodId: v._id },
       { withCredentials: true }
     );

@@ -3,6 +3,7 @@ import "../../styles/reels.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { API } from "../../api";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
@@ -33,8 +34,7 @@ const Home = () => {
   }, [videos]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/food", { withCredentials: true })
+    axios.get(`${API}/api/food`, { withCredentials: true })
       .then((res) => {
         const updated = res.data.foodItems.map((v) => {
           const savedLike = localStorage.getItem(`like_${v._id}`);
@@ -63,7 +63,7 @@ const Home = () => {
 
   async function likeVideo(v) {
     const response = await axios.post(
-      "http://localhost:3000/api/food/like",
+      `${API}/api/food/like`,
       { foodId: v._id },
       { withCredentials: true }
     );
@@ -80,7 +80,7 @@ const Home = () => {
 
   async function bookmarkVideo(v) {
     const response = await axios.post(
-      "http://localhost:3000/api/food/save",
+      `${API}/api/food/save`,
       { foodId: v._id },
       { withCredentials: true }
     );

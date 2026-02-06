@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/reels.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { API } from "../../api";
 
 const Profile = () => {
   const { id } = useParams();
@@ -10,7 +11,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/food-partner/${id}`, {
+      .get(`${API}/api/food-partner/${id}`, {
         withCredentials: true,
       })
       .then((response) => {
