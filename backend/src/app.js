@@ -8,9 +8,13 @@ const cors = require('cors')
 
 const app = express();
 app.use(cors({
-  origin :" http://localhost:5173",
-  credentials : true
+  origin: [
+    "http://localhost:5173",
+    "https://food-reels-mern-frontend.onrender.com"
+  ],
+  credentials: true
 }));
+
 app.use(cookieParser());
 app.use(express.json()); //this middleware brings data into req.body and makes it readable so that we can work upon it [req.body in auth.controllers.js]
 
