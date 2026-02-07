@@ -7,21 +7,22 @@
 
 .reels-wrapper{
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 .reels-container{
-  height: calc(100vh - var(--nav-height));
+  height: calc(100dvh - var(--nav-height));
   width: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   background: #000;
+  padding-bottom: var(--nav-height);
 }
 
 .reel{
-  height: calc(100vh - var(--nav-height));
+  height: calc(100dvh - var(--nav-height));
   position: relative;
   scroll-snap-align: start;
   display: flex;
@@ -40,14 +41,13 @@
 }
 
 /* ================= OVERLAY (DESCRIPTION + VISIT STORE) ================= */
-/* 🎯 FORCE MOVED DOWN USING TRANSFORM (THIS FIXES YOUR ISSUE) */
 
 .reel-overlay{
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 70px;                /* base anchor near navbar */
-  transform: translateY(28px);/* ✅ PUSH DOWN VISUALLY */
+  transform: translateY(28px); /* keep visual bottom alignment */
   padding-right: 43px;
   display: flex;
   flex-direction: column;
