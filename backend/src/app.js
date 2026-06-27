@@ -10,7 +10,8 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://food-reels-mern-frontend.onrender.com"
+    "https://food-reels-mern-frontend.onrender.com",
+    "https://food-reels-frontend.vercel.app"
   ],
   credentials: true
 }));
