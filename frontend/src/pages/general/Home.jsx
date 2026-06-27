@@ -7,6 +7,7 @@ import { API } from "../../api";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
+  const [showSwipeHint, setShowSwipeHint] = useState(false);
   const containerRef = useRef(null);
   const videoRefs = useRef([]);
   const navigate = useNavigate();
@@ -61,6 +62,20 @@ const Home = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const hasSeenHint = localStorage.getItem("reelSwipeHintShown");
+    if (hasSeenHint) return;
+
+    setShowSwipeHint(true);
+    localStorage.setItem("reelSwipeHintShown", "true");
+
+    const hideHintTimer = window.setTimeout(() => {
+      setShowSwipeHint(false);
+    }, 3000);
+
+    return () => window.clearTimeout(hideHintTimer);
+  }, []);
+
   async function likeVideo(v) {
     const response = await axios.post(
       `${API}/api/food/like`,
@@ -108,6 +123,15 @@ const Home = () => {
               playsInline
               loop
             />
+
+            {idx === 0 && showSwipeHint && (
+              <div className="swipe-hint" aria-hidden="true">
+                <span className="swipe-hint-arrow">↑</span>
+                <span className="swipe-hint-text">
+                  Swipe up for more reels
+                </span>
+              </div>
+            )}
 
             <div className="reel-actions">
               <button onClick={() => likeVideo(v)} className="action-btn">
